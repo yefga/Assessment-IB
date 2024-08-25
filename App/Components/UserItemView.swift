@@ -16,7 +16,7 @@ struct UserItem {
 struct UserItemView: View {
     
     let data: UserItem
-    @State var profileImage: UIImage?
+    let isLoading: Bool
     
     var body: some View {
         HStack {
@@ -44,23 +44,24 @@ struct UserItemView: View {
     
     private func UserCardDetailView() -> some View {
         VStack(alignment: .leading, spacing: 4) {
-            Text(data.name)
+            Text(isLoading ? .shimmeringString : data.name)
                 .font(
                     .workSans(
                         type: .semiBold,
                         size: .medium
                     )
                 )
-                .foregroundColor(.black)
-            
-            Text("@\(data.userName)")
+                .foregroundColor(isLoading ? .clear : .black)
+                .shimmering(isLoading)
+            Text(isLoading ? .shimmeringString : "@\(data.userName)")
                 .font(
                     .workSans(
                         type: .regular,
                         size: .small
                     )
                 )
-                .foregroundColor(.gray)
+                .foregroundColor(isLoading ? .clear : .gray)
+                .shimmering(isLoading)
         }
     }
 }
@@ -71,7 +72,8 @@ struct UserItemView: View {
             name: "Mas Jan Cook",
             userName: "jancook",
             photo: nil
-        )
+        ),
+        isLoading: true
     )
     .padding(.horizontal)
 

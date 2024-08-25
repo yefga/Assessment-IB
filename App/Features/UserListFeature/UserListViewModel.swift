@@ -4,7 +4,7 @@ struct UserState {
     var users: [User] = []
     var storedUsers: [User] = []
     var isLoading: Bool = false
-    var error: Error?
+    var error: NetworkError?
 }
 
 @MainActor
@@ -46,29 +46,10 @@ class UserListViewModel: UserListViewModelProtocol {
     func fetchUsers() async {
         state.isLoading = true
         state.error = nil
-        
+        state.users = User.mock
         do {
-//            var users = try await fetchUsersUseCase.execute()
-//            
-//            await withTaskGroup(of: Void.self) { group in
-//                for index in 0..<users.count {
-//                    group.addTask {
-//                        // Fetch the image for each user
-//                        await ImageDownloader.shared?.loadProfileImage { image in
-//                            DispatchQueue.main.async {
-//                                users[index].image = image?.pngData()  // Use the array index to set image data
-//                            }
-//                        }
-//                    }
-//                }
-//            }
-//            
-//            state.users = users
-//            state.storedUsers = users
-            
             let users = try await fetchUsersUseCase.execute()
             let userManager = UserManager(users: users)
-            
             // Fetch images in parallel
             await withTaskGroup(of: Void.self) { group in
                 for user in users {
@@ -83,15 +64,14 @@ class UserListViewModel: UserListViewModelProtocol {
             // Update state once all tasks are completed
             state.users = await userManager.getUsers()
             state.storedUsers = state.users
+            state.isLoading = false
 
-            
         } catch {
+            guard let error = error as? NetworkError else { return }
             state.error = error
+            state.isLoading = false
         }
-        
-        state.isLoading = false
     }
-    
     
     func searchUser(detail: String) async {
         search = detail

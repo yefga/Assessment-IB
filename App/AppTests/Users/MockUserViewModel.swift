@@ -19,7 +19,6 @@ class MockUserViewModel: UserListViewModelProtocol {
             state.error = nil
         case .failure(let error):
             state.users = []
-            state.error = error
         }
         
         state.isLoading = false

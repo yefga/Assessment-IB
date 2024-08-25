@@ -11,6 +11,9 @@ extension String {
     static var emptyString: String {
         ""
     }
+    static var shimmeringString: String {
+        "Long text for Shimmering"
+    }
 }
 
 extension Optional where Wrapped == String {

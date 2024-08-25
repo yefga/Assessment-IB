@@ -39,6 +39,10 @@
 		E51E21F62C7B3CDE0016DC64 /* String.swift in Sources */ = {isa = PBXBuildFile; fileRef = E51E21F52C7B3CDE0016DC64 /* String.swift */; };
 		E51E21F82C7B42FE0016DC64 /* Colors.swift in Sources */ = {isa = PBXBuildFile; fileRef = E51E21F72C7B42FE0016DC64 /* Colors.swift */; };
 		E51E21FA2C7B5CC80016DC64 /* ImageDownloader.swift in Sources */ = {isa = PBXBuildFile; fileRef = E51E21F92C7B5CC80016DC64 /* ImageDownloader.swift */; };
+		E5B442A22C7B76EB001D5B0C /* NetworkError.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5B442A12C7B76EB001D5B0C /* NetworkError.swift */; };
+		E5B442A42C7B7710001D5B0C /* ReachabilityManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5B442A32C7B7710001D5B0C /* ReachabilityManager.swift */; };
+		E5B442A62C7B79AA001D5B0C /* BlankView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5B442A52C7B79AA001D5B0C /* BlankView.swift */; };
+		E5B442A82C7B7F9A001D5B0C /* ShimmerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = E5B442A72C7B7F9A001D5B0C /* ShimmerView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -96,6 +100,10 @@
 		E51E21F52C7B3CDE0016DC64 /* String.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = String.swift; sourceTree = "<group>"; };
 		E51E21F72C7B42FE0016DC64 /* Colors.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colors.swift; sourceTree = "<group>"; };
 		E51E21F92C7B5CC80016DC64 /* ImageDownloader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageDownloader.swift; sourceTree = "<group>"; };
+		E5B442A12C7B76EB001D5B0C /* NetworkError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkError.swift; sourceTree = "<group>"; };
+		E5B442A32C7B7710001D5B0C /* ReachabilityManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReachabilityManager.swift; sourceTree = "<group>"; };
+		E5B442A52C7B79AA001D5B0C /* BlankView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BlankView.swift; sourceTree = "<group>"; };
+		E5B442A72C7B7F9A001D5B0C /* ShimmerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShimmerView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -198,6 +206,8 @@
 				E51E21EA2C7B2D1B0016DC64 /* TextFieldClearButton.swift */,
 				E51E21EC2C7B326A0016DC64 /* TopBottomBorder.swift */,
 				E51E21F72C7B42FE0016DC64 /* Colors.swift */,
+				E5B442A52C7B79AA001D5B0C /* BlankView.swift */,
+				E5B442A72C7B7F9A001D5B0C /* ShimmerView.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -321,7 +331,9 @@
 		E51E21D52C7B1BE90016DC64 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				E5B442A12C7B76EB001D5B0C /* NetworkError.swift */,
 				E51E21F42C7B3CD50016DC64 /* Extensions */,
+				E5B442A32C7B7710001D5B0C /* ReachabilityManager.swift */,
 			);
 			path = Modules;
 			sourceTree = "<group>";
@@ -469,7 +481,10 @@
 			files = (
 				E51E21792C7B0F710016DC64 /* App.swift in Sources */,
 				E51E21E22C7B21C20016DC64 /* Fonts.swift in Sources */,
+				E5B442A82C7B7F9A001D5B0C /* ShimmerView.swift in Sources */,
+				E5B442A22C7B76EB001D5B0C /* NetworkError.swift in Sources */,
 				E51E21F62C7B3CDE0016DC64 /* String.swift in Sources */,
+				E5B442A62C7B79AA001D5B0C /* BlankView.swift in Sources */,
 				E51E21E72C7B23A60016DC64 /* SearchView.swift in Sources */,
 				E51E21EF2C7B32AA0016DC64 /* UserDetailScreen.swift in Sources */,
 				E51E21CB2C7B16D30016DC64 /* UserRepositoryImpl.swift in Sources */,
@@ -482,6 +497,7 @@
 				E51E21EB2C7B2D1B0016DC64 /* TextFieldClearButton.swift in Sources */,
 				E51E217E2C7B0F710016DC64 /* App.xcdatamodeld in Sources */,
 				E51E21CF2C7B179F0016DC64 /* UserListScreen.swift in Sources */,
+				E5B442A42C7B7710001D5B0C /* ReachabilityManager.swift in Sources */,
 				E51E21ED2C7B326A0016DC64 /* TopBottomBorder.swift in Sources */,
 				E51E21BD2C7B126D0016DC64 /* UserUseCase.swift in Sources */,
 				E51E21E12C7B203A0016DC64 /* UserItemView.swift in Sources */,
@@ -653,6 +669,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = App/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = IndoBytes;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;
@@ -691,6 +708,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = App/Info.plist;
+				INFOPLIST_KEY_CFBundleDisplayName = IndoBytes;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents[sdk=iphoneos*]" = YES;

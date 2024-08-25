@@ -6,8 +6,13 @@ protocol UserDataSource {
 
 class APIUserDataSource: UserDataSource {
     private let baseURL = "https://jsonplaceholder.typicode.com"
-    
+    private let reachabilityManager = ReachabilityManager.shared
+
     func getUsers() async throws -> [UserDTO] {
+        guard reachabilityManager.isNetworkAvailable else {
+            throw NetworkError.noInternet
+        }
+        
         guard let url = URL(string: "\(baseURL)/users") else {
             throw NetworkError.invalidURL
         }

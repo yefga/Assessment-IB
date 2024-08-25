@@ -49,7 +49,7 @@ struct UserListScreen: View {
     
     var SectionTitle: some View {
         HStack {
-            Text("All Users".uppercased())
+            Text(viewModel.search.isEmpty ? "All Users".uppercased() : "Search Results".uppercased())
                 .font(.workSans(type: .semiBold, size: .medium))
                 .padding(
                     EdgeInsets.init(
@@ -69,19 +69,38 @@ struct UserListScreen: View {
     
     private var Binding: some View {
         ScrollView {
-            if viewModel.state.isLoading {
-                Text("Loading")
-            } else if let error = viewModel.state.error {
-                Text("Error: \(error.localizedDescription)")
+           if let error = viewModel.state.error {
+                switch error {
+                case .noInternet:
+                    BlankView(
+                        data: .init(
+                            title: "Your World, Offline",
+                            subtitle: "Discover Hidden Gems, Explore New Horizons with Internet",
+                            image: "image_offline"
+                        )
+                    )
+                    .padding(50)
+                default:
+                    BlankView(
+                        data: .init(
+                            title: "Uh-oh! Lost in Space",
+                            subtitle: "We couldn't find that page. Let's try another one.",
+                            image: "image_not_found"
+                        )
+                    )
+                    .padding(50)
+                }
+                
             } else {
                 VStack(spacing: 20) {
                     ForEach(viewModel.state.users, id: \.id) { user in
                         UserItemView(
                             data: .init(
                                 name: user.name.orValue(.emptyString),
-                                userName: user.username.orValue(.emptyString), photo: user.image
+                                userName: user.username.orValue(.emptyString), 
+                                photo: user.image
                             ),
-                            profileImage: profileImage
+                            isLoading: viewModel.state.isLoading
                         )
                         .listRowSeparator(.hidden)
                         .onTapGesture {
@@ -104,7 +123,7 @@ struct UserListScreen: View {
     
     private var HeaderView: some View {
         VStack(alignment: .leading, spacing: 32) {
-            Text(viewModel.search.isEmpty ? "Users" : "Search Results").font(
+            Text("Users").font(
                 .workSans(
                     type: .semiBold,
                     size: .large
